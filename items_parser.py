@@ -16,13 +16,13 @@ def parse(server, item):   # типа /get_cats_info "Название пред�
         soup = BeautifulSoup(response.content, 'html.parser')
         items = soup.find('tbody')
         
-        if items.find("tr") == None:
+        if items.find("tr") == None: # if content of body == none
             return "Предмет не найден"
         
         #----------------------------------------------------------
 
-        item_name = items.find("a").get_text(strip=True)
-        item_id = items.find("a").get("href")
+        item_name = items.find("a").get_text(strip=True) # getting item name from <a> tag
+        item_id = items.find("a").get("href") # item_id
         sell_price = items.find("td", class_="sell").get_text(strip=True)
         purchase_price = items.find("td", class_="buy").get_text(strip=True)
 

@@ -3,6 +3,8 @@ from discord.ext import commands
 import config
 import webbrowser
 import items_parser
+import datetime
+import time_script
 
 client = discord.Client()
 bot = commands.Bot(command_prefix="/")
@@ -12,6 +14,12 @@ bot = commands.Bot(command_prefix="/")
 async def on_message(message):
     if message.author == client.user:
         return
+
+@bot.command()
+async def google(ctx, arg):
+    url = f"https://www.google.com/search?q={arg}"
+    webbrowser.open(url)
+    await ctx.send('Found')
 
 @bot.command()
 async def vote(ctx, question=None, arg1=None, arg2=None):
@@ -64,6 +72,6 @@ async def get_cats(ctx, server=None, item_name=None): # типа /get_cats_info 
             emb = discord.Embed(colour=discord.Color.green())
             emb.add_field(name=f"Предмет: {item_name}", value=f'{items_parser.parse(server, item_name)}')
             await ctx.send(embed=emb)
-
-
+        
+        
 bot.run(config.TOKEN)

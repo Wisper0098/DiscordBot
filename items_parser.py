@@ -1,13 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 
-def parse(server, item):   # типа /get_cats_info "Название предмета", "сервер"
+def parse(server, item): 
     servers = {"Саргас":"sargas", 
                "Скорпион": "scorpio", 
                "Титан": "titan", 
                "Фобос": "fobos"} # servers
     
-    iTem = item.replace(" ", "+")
+    iTem = item.replace(" ", "+") # 
 
     if server in servers:
         URL = f"https://pwcats.info/{servers[server]}/search?item={iTem}"

@@ -25,7 +25,10 @@ def parse(server, item):
         item_id = items.find("a").get("href") # item_id
         sell_price = items.find("td", class_="sell").get_text(strip=True)
         purchase_price = items.find("td", class_="buy").get_text(strip=True)
-
+        itemS = dict()
+        #for i in items.find_all("a"):
+        #    item_name = i.get_text(strip=True)
+        #    item_price = i.find("td")
         #----------------------------------------------------------
             
         url = f"https://pwcats.info{item_id}/"
@@ -43,5 +46,7 @@ def parse(server, item):
 
     else:
         return False
+
+parse("Фобос", "Амулет")
 
 
